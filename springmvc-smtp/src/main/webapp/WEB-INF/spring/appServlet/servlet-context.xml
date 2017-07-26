@@ -11,8 +11,12 @@
 	<context:annotation-config/>
 	<context:component-scan base-package="com.spring.mvc.mini" />
 
-    <beans:bean id="aa" class="com.game.controller.PathFile" init-method="haha">
+    <beans:bean id="PathFile" class="com.game.controller.PathFile" init-method="haha">
     	<beans:property name="s" value="file:resources/application.properties"/>
+    </beans:bean>
+    
+    <beans:bean id="PathClasspath" class="com.game.controller.PathClasspath" init-method="haha">
+    	<beans:property name="s" value="classpath:application.properties"/>
     </beans:bean>
    
 	<context:property-placeholder location="classpath*:application.properties"/>

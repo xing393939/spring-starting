@@ -1,4 +1,12 @@
+*.DS_Store
+bin
+target
+.classpath
+.project
+.settings
+src/main/webapp/META-INF
 .idea
-activity0_0.log
-spring-mvc-test.iml
-*target*
+*.iml
+*.log
+*.ipr
+*.iws

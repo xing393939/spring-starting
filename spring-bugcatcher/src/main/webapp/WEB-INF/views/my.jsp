@@ -1,5 +1,5 @@
 <%@ include file="common/IncludeHead.jsp"%>
-<link href="../css/my.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/my.css" rel="stylesheet">
 <%@ include file="common/IncludeNavbar.jsp"%>
 
 <div id="Content" class="container">

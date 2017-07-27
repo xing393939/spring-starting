@@ -11,5 +11,5 @@
 
   <title>捉虫记</title>
 
-  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
   <%--<link href="../css/bootstrap-theme.min.css" rel="stylesheet">--%>

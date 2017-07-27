@@ -6,15 +6,20 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/mybatis" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="" />
-	</beans:bean>
+		
+	<!-- 配置数据源 -->
+    <beans:bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!-- 使用properties来配置 -->
+        <beans:property name="driverClassName"
+            value="com.mysql.jdbc.Driver" />
+        <beans:property name="url"
+            value="jdbc:mysql://localhost:3306/mybatis" />
+        <beans:property name="username"
+            value="root" />
+        <beans:property name="password"
+            value="" />
+    </beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"

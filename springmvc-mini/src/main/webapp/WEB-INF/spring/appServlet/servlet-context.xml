@@ -11,7 +11,7 @@
 	<context:annotation-config/>
 	<context:component-scan base-package="com.spring.mvc.mini" />
 
-	<context:property-placeholder location="file:resources/application.properties"/>
+	<context:property-placeholder location="classpath*:application.properties"/>
 
 	<annotation-driven conversion-service="conversionService">
 	</annotation-driven>

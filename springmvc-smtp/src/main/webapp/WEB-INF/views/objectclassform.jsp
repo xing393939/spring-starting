@@ -88,7 +88,7 @@
 					return false;  
 				});		
 				$("#addmore").click(function() {
-					 $.post("/spring-mvc-mini/objectclassform" ,
+					 $.post("/springmvc-smtp/objectclassform" ,
 							$("#form2").serialize()+"&objclscount=${fn:length(ojbclslisttype.objectClasses)}",
 							 function(html){$("#formsContent2").replaceWith(html);}
 							 );

@@ -44,6 +44,7 @@ public class FileUploadController {
     @RequestMapping(method = RequestMethod.GET)
     public String listUploadedFiles(Model model) throws IOException {
 
+    	System.out.println(System.getProperty("user.home"));
         model.addAttribute("active_fileUpload", true);
         model.addAttribute("files", storageService
                 .loadAll()

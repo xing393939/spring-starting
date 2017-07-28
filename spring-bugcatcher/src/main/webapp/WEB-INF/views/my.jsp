@@ -83,10 +83,10 @@
                                     <c:when test="${taskcase.getEvaluated()}">
                                         <c:choose>
                                             <c:when test="${taskcase.getCasescore()}">
-                                                <img class="img_${taskEntry.key}" src="/images/good.png" />
+                                                <img class="img_${taskEntry.key}" src="${pageContext.request.contextPath}/images/good.png" />
                                             </c:when>
                                             <c:otherwise>
-                                                <img class="img_${taskEntry.key}" src="/images/bad.png" />
+                                                <img class="img_${taskEntry.key}" src="${pageContext.request.contextPath}/images/bad.png" />
                                             </c:otherwise>
                                         </c:choose>
                                     </c:when>

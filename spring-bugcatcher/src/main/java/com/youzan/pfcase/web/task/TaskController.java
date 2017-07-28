@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.*;
+import org.slf4j.Logger;
 
 /**
  * Created by sunjun on 16/8/12.
@@ -40,11 +41,11 @@ public class TaskController {
         return new TaskForm();
     }
 
-
     //
     @RequestMapping("newTaskForm")
     public String newTaskForm(ModelMap model) {
         model.addAttribute("KFAccounts", accountService.getAllKFAccount());
+        System.out.println(accountService.getAllKFAccount());
         model.addAttribute("active_newTask", true);
 
         return "task/NewTaskForm";
@@ -69,7 +70,6 @@ public class TaskController {
 
         return "redirect:/my";
     }
-
 
     //
     @RequestMapping(value = "editTaskForm", method = RequestMethod.GET)

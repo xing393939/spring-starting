@@ -1,5 +1,5 @@
 <%@ include file="common/IncludeHead.jsp"%>
-<link href="../css/notFoundError.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/notFoundError.css" rel="stylesheet">
 </head>
 
 <body>

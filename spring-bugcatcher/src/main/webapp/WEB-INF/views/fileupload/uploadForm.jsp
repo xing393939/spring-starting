@@ -1,6 +1,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../common/IncludeHead.jsp"%>
-<link href="../css/UploadForm.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/UploadForm.css" rel="stylesheet">
 <%@ include file="../common/IncludeNavbar.jsp"%>
 
 <div id="Content" class="container">

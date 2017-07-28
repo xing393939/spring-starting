@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * Created by sunjun on 16/9/27.
  */
 @Controller
-@RequestMapping("fileupload")
+@RequestMapping("/fileupload")
 public class FileUploadController {
 
     @Autowired
@@ -43,13 +43,15 @@ public class FileUploadController {
     //file list
     @RequestMapping(method = RequestMethod.GET)
     public String listUploadedFiles(Model model) throws IOException {
+    	
+    	String a = MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile", "1.jpg").build().toString();
 
-    	System.out.println(System.getProperty("user.home"));
+    	System.out.println(a);
+    	
         model.addAttribute("active_fileUpload", true);
         model.addAttribute("files", storageService
                 .loadAll()
-                .map(path ->
-                        MvcUriComponentsBuilder
+                .map(path->MvcUriComponentsBuilder
                                 .fromMethodName(FileUploadController.class, "serveFile", path.getFileName().toString())
                                 .build().toString())
                 .collect(Collectors.toList()));

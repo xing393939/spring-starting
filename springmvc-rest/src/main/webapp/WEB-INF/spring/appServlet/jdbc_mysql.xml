@@ -29,7 +29,6 @@
 			<beans:list>
 				<beans:value>com.spring.mvc.mini.model.Person</beans:value>
 				<beans:value>com.spring.mvc.mini.model.Student</beans:value>
-
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -55,6 +54,5 @@
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-
 
 </beans:beans>

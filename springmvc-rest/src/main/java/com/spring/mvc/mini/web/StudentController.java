@@ -22,6 +22,11 @@ public class StudentController {
 		studentService = ss;
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String redirect() {
+	    return "redirect:students";
+	}
+	
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public @ResponseBody List getStudentsInJSON() {
 

@@ -1,4 +1,4 @@
-package com.game.controller;
+package com.yihaomen.web.hello;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,6 @@ public class Helloworld {
 
     @RequestMapping("/helloworld")
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //Êä³ö×Ö·û´®
-        response.getWriter().append("hello world");
+        response.getWriter().append("hello world 123");
     }
 }

@@ -1,4 +1,4 @@
-package com.yihaomen.controller;
+package com.yihaomen.web.index;
 public class Student {
    private Integer age;
    private String name;

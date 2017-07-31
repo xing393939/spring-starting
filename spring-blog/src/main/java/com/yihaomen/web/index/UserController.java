@@ -1,4 +1,4 @@
-package com.yihaomen.controller;
+package com.yihaomen.web.index;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

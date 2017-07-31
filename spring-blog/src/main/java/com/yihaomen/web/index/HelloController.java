@@ -1,4 +1,4 @@
-package com.yihaomen.controller;
+package com.yihaomen.web.index;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;

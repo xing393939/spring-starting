@@ -28,7 +28,6 @@ public class HelloController{
    
    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
    public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
-       //Êä³ö×Ö·û´®
        response.getWriter().append("hello world");
    }
    

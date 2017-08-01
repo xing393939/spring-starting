@@ -10,7 +10,6 @@ import com.yihaomen.mybatis.inter.IUserOperation;
 import com.yihaomen.mybatis.model.Article;
 
 @Controller
-@RequestMapping("/article")
 public class UserController {
     @Autowired
     IUserOperation userMapper;

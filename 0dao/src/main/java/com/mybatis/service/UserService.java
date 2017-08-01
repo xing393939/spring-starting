@@ -1,5 +1,7 @@
 package com.mybatis.service;
 
+import java.util.List;
+
 import com.mybatis.dao.IUserDao;
 import com.mybatis.entity.User;
 
@@ -15,13 +17,27 @@ public class UserService {
 		this.userDao = userDao;
 	}
 
+	public int insertUser(User user) {
+		int r = userDao.insertUser(user);
+		return r;
+	}
+	
 	// 修改用户信息
-	public void updateUser(User user) {
-		userDao.updateUser(user);
-		int a = 1 / 0;
+	public int updateUser(User user) {
+		int r = userDao.updateUser(user);
+		return r;
+	}
+	
+	public int deleteUser(int id) {
+		int r = userDao.deleteUser(id);
+		return r;
 	}
 	
 	public User findUserById(int id) {
 		return userDao.findUserById(id);
+	}
+	
+	public List<User> findUserByUsername(String username) {
+		return userDao.findUserByUsername(username);
 	}
 }

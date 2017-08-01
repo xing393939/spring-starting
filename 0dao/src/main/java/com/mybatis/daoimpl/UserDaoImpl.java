@@ -1,5 +1,7 @@
 package com.mybatis.daoimpl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -17,30 +19,37 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements IUserDao {
 		SqlSession sqlSession = this.getSqlSession();
 		User user = sqlSession.selectOne("user.findUserById", id);
 		return user;
-
+	}
+	
+	@Override
+	public List<User> findUserByUsername(String username) {
+		SqlSession sqlSession = this.getSqlSession();
+		List<User> users = sqlSession.selectList("user.findUserByUsername", username);
+		return users;
 	}
 
 	@Override
-	public void insertUser(User user) {
+	public int insertUser(User user) {
 		SqlSession sqlSession = this.getSqlSession();
 		// 执行插入操作
-		sqlSession.insert("user.insertUser", user);
-
+		int r = sqlSession.insert("user.insertUser", user);
+		return r;
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public int deleteUser(int id) {
 		SqlSession sqlSession = this.getSqlSession();
 		// 执行插入操作
-		sqlSession.delete("user.deleteUserById", id);
-
+		int r = sqlSession.delete("user.deleteUserById", id);
+		return r;
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public int updateUser(User user) {
 		SqlSession sqlSession = this.getSqlSession();
 		// 执行插入操作
-		sqlSession.update("user.updateUser", user);
+		int r = sqlSession.update("user.updateUser", user);
+		return r;
 	}
 
 }

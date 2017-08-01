@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 自定义条件查询用户列表 -->
 	<select id="findUserByUsername" parameterType="java.lang.String"
 		resultType="user">
-		select * from user where username like '%${value}%'
+		select * from user where userName like '%${value}%'
 	</select>
 
 	<!-- parameterType：定义输入到sql中的映射类型， #{id}表示使用preparedstatement设置占位符号并将输入变量id传到sql。 
@@ -25,8 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select
 			LAST_INSERT_ID()
 		</selectKey>
-		insert into user(username,birthday,sex,address)
-		values(#{username},#{birthday},#{sex},#{address})
+		insert into user(userName,userAge,userAddress)
+		values(#{username},#{birthday},#{address})
 	</insert>
 	<!--删除用户 -->
 	<delete id="deleteUserById" parameterType="int">
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--更新用户 -->
 	<update id="updateUser" parameterType="com.mybatis.entity.User">
 		update user set
-		username=#{username},birthday=#{birthday},sex=#{sex},address=#{address}
+		userName=#{username},userAge=#{birthday},userAddress=#{address}
 		where id=#{id}
 	</update>
 

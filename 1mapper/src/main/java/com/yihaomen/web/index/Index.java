@@ -2,6 +2,7 @@ package com.yihaomen.web.index;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +22,34 @@ public class Index {
 	@Resource
 	private UserService userService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //输出字符串
         response.getWriter().append("hello world");
     }
     
-    @RequestMapping("/list")
+    @RequestMapping("/insertUser")
+    public void insertUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = new User();  
+        user.setId(22);  
+        user.setUsername("hehe22");
+        user.setBirthday("2");
+        int r = userService.insertUser(user);
+               
+        System.out.printf("result:%d userid: %d\n", r, user.getId());
+        response.getWriter().append("userid:" + (user.getId()));
+    }
+    
+    @RequestMapping("/deleteUser")
+    public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int r = userService.deleteUserById(3);
+        
+        System.out.println(r);
+        
+        response.getWriter().append("result:" + r);
+    }
+    
+    @RequestMapping("/findUserById")
     public ModelAndView listall(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	//IUserDao userDao = (IUserDao) applicationContext.getBean("userDao");
     	User user = userService.findUserById(1); 
@@ -38,5 +60,26 @@ public class Index {
         ModelAndView mav = new ModelAndView("hello2");
         
         return mav;
+    }
+    
+    @RequestMapping("/findUserByUsername")
+    public void findUserByUsername(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	List<User> users = userService.findUserByUsername("2");
+        System.out.println(users);
+        
+        response.getWriter().append("user");
+    }
+    
+    @RequestMapping("/updateUser")
+    public void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = new User();  
+        user.setId(1);  
+        user.setUsername("abc");
+        user.setBirthday("2");
+        int r = userService.updateUser(user);
+        
+        System.out.println(r);
+        
+        response.getWriter().append("result:" + r);
     }
 }

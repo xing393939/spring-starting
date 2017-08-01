@@ -6,7 +6,7 @@ public class User {
 	private int id;
 	private String username;// 用户姓名
 	private String sex;// 性别
-	private Date birthday;// 生日
+	private String birthday;// 生日
 	private String address;// 地址
 
 	public User() {
@@ -36,11 +36,11 @@ public class User {
 		this.sex = sex;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

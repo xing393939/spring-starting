@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace ：命名空间，用于隔离sql语句，后面会讲另一层非常重要的作用 -->
+<mapper namespace="com.mybatis.mapper.UserMapper">
+	<!-- 根据id获取用户信息 -->
+	<select id="findUserById" parameterType="int" resultType="user">
+		select
+		* from user where id = #{id}
+	</select>
+	<!-- 自定义条件查询用户列表 -->
+	<select id="findUserByUsername" parameterType="java.lang.String"
+		resultType="user">
+		select * from user where username like '%${value}%'
+	</select>
+
+	<!-- parameterType：定义输入到sql中的映射类型， #{id}表示使用preparedstatement设置占位符号并将输入变量id传到sql。 
+		resultType：定义结果映射类型。 -->
+
+	<!-- 添加用户 -->
+	<!-- 并成功获取到,添加成功的用户的id -->
+	<insert id="insertUser" parameterType="com.mybatis.entity.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			select
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into user(username,birthday,sex,address)
+		values(#{username},#{birthday},#{sex},#{address})
+	</insert>
+	<!--删除用户 -->
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where
+		id=#{id}
+	</delete>
+
+	<!--更新用户 -->
+	<update id="updateUser" parameterType="com.mybatis.entity.User">
+		update user set
+		username=#{username},birthday=#{birthday},sex=#{sex},address=#{address}
+		where id=#{id}
+	</update>
+
+
+
+
+</mapper>

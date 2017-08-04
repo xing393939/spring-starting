@@ -1,6 +1,8 @@
 package com.yihaomen.web.hello;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
 	public Course(int i, String string) {
 		this.id = i;
 		this.name = string;

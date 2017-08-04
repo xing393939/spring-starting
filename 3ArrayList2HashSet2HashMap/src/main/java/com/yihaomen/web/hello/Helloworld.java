@@ -3,9 +3,11 @@ package com.yihaomen.web.hello;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Helloworld {
+	
+    @RequestMapping("/sorttest")
+    public void SortTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	response.getWriter().println("<html>");
+    	ArrayList<Integer> integerList = new ArrayList<Integer>();
+    	Random random = new Random();
+    	Integer k;
+    	for (int i = 0; i < 5; i ++) {
+    		do {
+    			k = random.nextInt(5);
+    		} while (integerList.contains(k));
+    		integerList.add(k);
+    	}
+    	
+    	//sort
+    	Collections.sort(integerList);
+    	
+    	for (Integer t : integerList) {
+    		response.getWriter().println(t + "<br />");
+    	}
+    	
+    	ArrayList<Student> stuList = new ArrayList<Student>();
+    	stuList.add(new Student("1", "aaa"));
+    	stuList.add(new Student("3", "ccc"));
+    	stuList.add(new Student("2", "bbb"));
+    	
+    	//sort student
+    	Collections.sort(stuList);
+    	
+    	for (Student st : stuList) {
+    		response.getWriter().println(st.id + st.name + "<br />");
+    	}
+    	
+    	response.getWriter().println("</html>");
+    }
 	
     @RequestMapping("/maptest")
     public void MapTest(HttpServletRequest request, HttpServletResponse response) throws IOException {

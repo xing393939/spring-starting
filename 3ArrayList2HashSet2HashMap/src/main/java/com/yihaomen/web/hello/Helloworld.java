@@ -1,6 +1,8 @@
 package com.yihaomen.web.hello;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Helloworld {
+	
+    @RequestMapping("/serialized")
+    public void Serialized(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	response.getWriter().println("<html>");
+    	String file = "demo/demo.txt";
+    	ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+    	Course c1 = new Course(1, "aaa");
+    	oos.writeObject(c1);
+    	oos.flush();
+    	oos.close();
+    	
+    	response.getWriter().println("</html>");
+    }
 	
     @RequestMapping("/sorttest")
     public void SortTest(HttpServletRequest request, HttpServletResponse response) throws IOException {

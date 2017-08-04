@@ -1,8 +1,10 @@
 package com.yihaomen.web.hello;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +36,15 @@ public class Helloworld {
     	oos.writeObject(c1);
     	oos.flush();
     	oos.close();
+    	
+    	Course c2 = null;
+    	ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+    	try {
+			c2 = (Course) ois.readObject();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    	response.getWriter().println(c2);
     	
     	response.getWriter().println("</html>");
     }

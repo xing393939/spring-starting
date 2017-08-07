@@ -31,8 +31,6 @@ public class Helloworld {
     @Autowired
     private RedisTemplate<String,User> redisTemplate;
     
-    
-    
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().append("hello world");

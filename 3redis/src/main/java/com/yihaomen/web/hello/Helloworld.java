@@ -13,17 +13,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Helloworld {
+	
+	@Autowired
+    private RedisService redisService;
 
     @Autowired
     private RedisTemplate<String,User> redisTemplate;
     
-    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().append("hello world");
     }
+    
+    @RequestMapping("/redisService")
+    public void redisService(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	response.getWriter().println("<html>");
+
+        redisService.set("key2", "value2"); 
+        response.getWriter().println(redisService.get("key2"));
+    	
+    	response.getWriter().println("</html>");
+    }
 	
-    @RequestMapping("/redis")
-    public void Serialized(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping("/redisTemplate")
+    public void redisTemplate(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	response.getWriter().println("<html>");
 
     	User u1=new User();

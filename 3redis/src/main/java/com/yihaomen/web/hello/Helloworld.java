@@ -42,7 +42,6 @@ public class Helloworld {
     public void gson(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	response.getWriter().println("<html>");
 
-    	ObjectMapper objectMapper = new ObjectMapper();
         String jsonStr = "{\"data\":[{\"typeName\":\"Themes\",\"picturePath\":\"http://ndl.mgccw.com/mu/wallpaper/2014/8/18/085628192/6ae419444f544662a831b32e60032c53.png\",\"mtypeCode\":1,\"typeCode\":44,\"appNums\":2183}],\"code\":200}";
 
         JsonParser parse =new JsonParser();  //创建JSON解析器

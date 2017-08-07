@@ -16,6 +16,14 @@
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>  
     <mvc:default-servlet-handler/>  
 
+    <bean id="PathClasspath" class="com.yihaomen.web.hello.BeanPath" init-method="getClassPath">
+    	<property name="s1" value="classpath:application.properties"/>
+    </bean>
+    
+    <bean id="PathFile" class="com.yihaomen.web.hello.BeanPath" init-method="getFilePath">
+    	<property name="s2" value="file:resources/application.properties"/>
+    </bean>
+
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">

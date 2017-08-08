@@ -15,6 +15,16 @@ public class User implements Serializable {
     /** 用户年龄 */
     private Integer age;
 
+	public User(Long i, String string2) {
+		// TODO Auto-generated constructor stub
+		this.id = i;
+		this.name = string2;
+	}
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}

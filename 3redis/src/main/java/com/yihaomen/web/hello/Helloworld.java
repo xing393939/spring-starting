@@ -1,6 +1,7 @@
 package com.yihaomen.web.hello;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.alibaba.fastjson.JSON;
@@ -32,8 +34,18 @@ public class Helloworld {
     private RedisTemplate<String,User> redisTemplate;
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.getWriter().append("hello world");
+    public ModelAndView fooView() {
+    	ModelAndView view = new ModelAndView("index");
+    	List<User> todos = Arrays.asList(
+			new User(1L, "Todo description aaa"),
+			new User(2L, "Todo description bbb"),
+			new User(3L, "Todo description ccc")
+    	);
+    	view.addObject("person", new User(1L, "Jo jo"));
+    	view.addObject("todos", todos);
+      
+      	view.addObject("name", "foo");
+      	return view;
     }
     
     @RequestMapping("/gson")

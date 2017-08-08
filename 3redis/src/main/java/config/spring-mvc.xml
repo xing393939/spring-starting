@@ -23,7 +23,22 @@
     <bean id="PathFile" class="com.yihaomen.web.hello.BeanPath" init-method="getFilePath">
     	<property name="s2" value="file:resources/application.properties"/>
     </bean>
-
+    
+	<!-- jmustache -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.mustache.MustacheViewResolver">
+	    <property name="prefix" value="/WEB-INF/jsp/" />
+	    <property name="suffix" value=".jsp" />
+	    <property name="templateFactory">
+	        <bean class="org.springframework.web.servlet.view.mustache.jmustache.JMustacheTemplateFactory">
+	            <property name="escapeHTML" value="true"/>
+	            <property name="standardsMode" value="false"/>
+	            <property name="templateLoader">
+	                <bean class="org.springframework.web.servlet.view.mustache.jmustache.JMustacheTemplateLoader"/>                                
+	            </property>
+	        </bean>
+	    </property>
+	</bean>
+	
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,21 +25,21 @@ public class Index {
 	private UserService userService;
 
     @RequestMapping("/")
-    public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //输出字符串
-        response.getWriter().append("hello world");
+    public String helloWorld(Model model) {
+        return "index";
     }
     
     @RequestMapping("/insertUser")
-    public void insertUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String insertUser(ModelMap model) {
         User user = new User();  
         user.setId(22);  
         user.setUsername("hehe22");
         user.setBirthday("2");
         int r = userService.insertUser(user);
                
-        System.out.printf("result:%d userid: %d\n", r, user.getId());
-        response.getWriter().append("userid:" + (user.getId()));
+        model.addAttribute("userid",  user.getId());
+        model.addAttribute("user", user);
+        return "insertUsers";
     }
     
     @RequestMapping("/deleteUser")
@@ -52,8 +54,8 @@ public class Index {
     @RequestMapping("/findUserById")
     public ModelAndView listall(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	//IUserDao userDao = (IUserDao) applicationContext.getBean("userDao");
-    	User user = userService.findUserById(1); 
-        System.out.println(user); 
+    	User user = userService.findUserById(1);
+        System.out.println(user);
         
         response.getWriter().append("user");
         

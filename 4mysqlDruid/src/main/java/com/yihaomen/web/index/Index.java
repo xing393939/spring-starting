@@ -18,14 +18,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.base.Charsets;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Maps;
-import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
 
 //com.google.common.primitices包下的Ints，Doubles，Floats，Shorts，Bytes以及Bools等工具类
 import com.google.common.primitives.Ints;
+
 import com.google.common.io.Files;
 
 import com.mybatis.entity.User;

@@ -1,22 +1,32 @@
 package com.yihaomen.web.index;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.common.collect.Maps;
+import com.google.common.base.Charsets;
+import com.google.common.collect.Iterables;
+
+//com.google.common.primitices包下的Ints，Doubles，Floats，Shorts，Bytes以及Bools等工具类
+import com.google.common.primitives.Ints;
+import com.google.common.io.Files;
 
 import com.mybatis.entity.User;
 import com.mybatis.service.UserService;
@@ -25,9 +35,85 @@ import com.mybatis.service.UserService;
 public class Index {
 	@Resource
 	private UserService userService;
-
+	
     @RequestMapping("/")
-    public String helloWorld(Model model) {
+    public String index(Model model) {
+    	return "index";
+    }
+    
+    @RequestMapping("guava")
+    public String guava(Model model) {
+    	//lists
+    	List<Integer> aa = Lists.newArrayList(1, 2, 3);
+    	List<String> bb = Lists.newArrayList("1", "2", "3");
+    	List<User> uu = Lists.newArrayList(new User(), new User());
+    	bb.add("1");
+    	System.out.println(bb);
+    	
+    	//list to array
+    	Integer[] a = Iterables.toArray(aa, Integer.class);
+    	String[] b = Iterables.toArray(bb, String.class);
+    	int[] c = Ints.toArray(aa);
+    	System.out.println("" + a[0] + a[1] + a[2] + "");
+    	System.out.println("" + c[0] + c[1] + c[2] + "");
+    	System.out.println(b);
+    	
+    	//sets
+    	HashSet<User> su = Sets.newHashSet();
+    	HashSet<String> s1 = Sets.newHashSet("a", "b", "c");
+    	su.addAll(uu);
+    	System.out.println(s1);
+    	
+    	//maps
+    	HashMap<String, User> hm = Maps.newHashMap();
+    	hm.put("key", uu.get(0));
+    	System.out.println(hm);
+    	
+    	//files
+    	//File file2 = new File(getClass().getResource("/demo.txt").getFile());
+    	File file = new File("./demo.txt");
+    	System.out.println(file.getAbsolutePath());
+    	List<String> lines = null;
+    	try {
+    		lines = Files.readLines(file, Charsets.UTF_8);
+    		System.out.println(lines);
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	
+    	return "index";
+    }
+
+    @RequestMapping("array2list2set2map")
+    public String array2list2set2map(Model model) {
+        //array
+    	int[] a = {5,2,3,4};
+        String[] b = {"1","2","3"};
+        User[] users = {new User(), new User()};
+        Arrays.sort(a);
+        System.out.print("" + a[0] + a[1] + a[2] + "");
+        
+        //list
+        //Arrays.asList(b) is an array whose size can't change
+        List<String> immobilizedSize = Arrays.asList(b);
+        List<String> bb = new ArrayList<String> (immobilizedSize);
+        List<User> uu = Arrays.asList(users);
+        bb.add("1");
+        System.out.print(bb);
+        
+        //set
+        HashSet<User> su = new HashSet<User>();
+        HashSet<String> s1 = new HashSet<String>();
+        su.addAll(uu);
+        s1.addAll(bb);
+        s1.add("1");
+        System.out.print(s1);
+        
+        //map
+        HashMap<String, User> hm = new HashMap<String, User>();
+        hm.put("key", uu.get(0));
+        System.out.print(hm);
+    	
         return "index";
     }
     
@@ -37,7 +123,7 @@ public class Index {
         user.setId(22);  
         user.setUsername("hehe22");
         user.setBirthday("2");
-        int r = userService.insertUser(user);
+        userService.insertUser(user);
         
         ArrayList<User> articles = new ArrayList<User>();
         articles.add(user);

@@ -1,7 +1,9 @@
 package com.yihaomen.web.index;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,9 +38,14 @@ public class Index {
         user.setUsername("hehe22");
         user.setBirthday("2");
         int r = userService.insertUser(user);
+        
+        HashMap<String, Object> a;
+        ArrayList<User> articles = new ArrayList<User>();
+        articles.add(user);
                
         model.addAttribute("userid",  user.getId());
         model.addAttribute("user", user);
+        model.addAttribute("articles", articles);
         return "insertUsers";
     }
     

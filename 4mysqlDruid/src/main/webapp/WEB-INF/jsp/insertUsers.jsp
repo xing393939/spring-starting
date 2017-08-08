@@ -6,7 +6,11 @@
 </head>
 <body>
    <h2>${userid}</h2>
-   ${user.id}
-   ${user.username}
+   <p>${user.id}</p>
+   <p>${user.username}</p>
+   
+   <c:forEach items="${articles}" var="item">  
+   <p>${item.id}--${item.username}</p>
+   </c:forEach>
 </body>
 </html>

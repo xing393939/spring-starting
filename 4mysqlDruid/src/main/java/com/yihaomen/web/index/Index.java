@@ -39,7 +39,6 @@ public class Index {
         user.setBirthday("2");
         int r = userService.insertUser(user);
         
-        HashMap<String, Object> a;
         ArrayList<User> articles = new ArrayList<User>();
         articles.add(user);
                
@@ -50,12 +49,22 @@ public class Index {
     }
     
     @RequestMapping("/deleteUser")
-    public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ModelAndView deleteUser() {
         int r = userService.deleteUserById(3);
+        User user = new User();  
+        user.setId(22);  
+        user.setUsername("hehe22");
+        user.setBirthday("2");
         
-        System.out.println(r);
+        ArrayList<User> articles = new ArrayList<User>();
+        articles.add(user);
         
-        response.getWriter().append("result:" + r);
+        ModelAndView mav = new ModelAndView("deleteUser");
+        mav.addObject("userid",  r);
+        mav.addObject("user", user);
+        mav.addObject("articles", articles);
+        
+        return mav;
     }
     
     @RequestMapping("/findUserById")

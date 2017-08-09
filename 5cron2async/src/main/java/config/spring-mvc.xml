@@ -13,7 +13,7 @@
 	<context:annotation-config/>  
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
     
-    <context:component-scan base-package="com.yihaomen.web.hello" />
+    <context:component-scan base-package="com.yihaomen.web" />
     <mvc:annotation-driven />
 
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>  

@@ -19,6 +19,9 @@
     <import resource="spring/spring-mybatis.xml" />
     <import resource="spring/spring-redis.xml" />
 
-	<task:annotation-driven/>  
+    <task:scheduler id="myScheduler"/>
+    <task:scheduled-tasks scheduler="myScheduler">
+        <task:scheduled ref="MyTestServiceImpl" method="myTest2" cron="0/5 * * * * *"/>
+    </task:scheduled-tasks>
 	
 </beans>

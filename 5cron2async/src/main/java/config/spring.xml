@@ -17,4 +17,10 @@
     <import resource="spring/spring-mybatis.xml" />
     <import resource="spring/spring-redis.xml" />
 
+	<bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="25" />
+	</bean>
+
 </beans>

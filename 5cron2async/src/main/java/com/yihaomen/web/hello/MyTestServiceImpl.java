@@ -26,7 +26,7 @@ public class MyTestServiceImpl  implements IMyTestService {
           } catch (IOException ex) {
         	  
           }
-          System.out.println("test ........." + date1);  
+          System.out.println("test1 ........." + date1);  
       }
       
       public void myTest2() {
@@ -40,6 +40,10 @@ public class MyTestServiceImpl  implements IMyTestService {
           } catch (IOException ex) {
         	  
           }
-          System.out.println("test ........." + date1);  
+          System.out.println("test2 ........." + date1);  
+      }
+      
+      public void myTest3() {
+    	  
       }
 }

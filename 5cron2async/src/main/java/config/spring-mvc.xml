@@ -13,13 +13,13 @@
 	<context:annotation-config/>  
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
     
-    <context:component-scan base-package="com.yihaomen.web" />
+    <context:component-scan base-package="com.yihaomen.web.hello" />
     <mvc:annotation-driven />
 
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>  
     <mvc:default-servlet-handler/>  
     
-    <bean id="ScheduleTest" class="com.yihaomen.web.hello.ScheduleTest" init-method="job1"></bean>
+    <bean id="MyTestServiceImpl" class="com.yihaomen.web.hello.MyTestServiceImpl" init-method="myTest"></bean>
     
     <bean id="PathClasspath" class="com.yihaomen.web.hello.BeanPath" init-method="getClassPath">
     	<property name="s1" value="classpath:application.properties"/>

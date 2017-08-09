@@ -19,8 +19,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Controller
 public class Helloworld {
 	   
-    @Resource
-    private ThreadPoolTaskExecutor taskExecutor;
+    //@Resource
+    //private ThreadPoolTaskExecutor taskExecutor;
     
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -35,6 +35,7 @@ public class Helloworld {
     @RequestMapping(value = "/taskExecutor", method = RequestMethod.GET)
     public void taskExecutor(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().append("hello world");
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.execute(new Runnable() {
         	public void run() {
         		try {

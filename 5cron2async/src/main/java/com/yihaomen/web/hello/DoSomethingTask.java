@@ -11,10 +11,9 @@ import java.util.Date;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-@Component 
-public class MyTestServiceImpl  implements IMyTestService {  
+@Component("doSomethingTask")
+public class DoSomethingTask {  
       @Scheduled(cron="0/5 * * * * ?")   //每5秒执行一次  
-      @Override  
       public void myTest() {
     	  SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
     	  String date1= sdf1.format(new Date(System.currentTimeMillis()))+".txt";

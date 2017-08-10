@@ -13,15 +13,15 @@ import org.springframework.stereotype.Component;
 
 @Component("doSomethingTask")
 public class DoSomethingTask {  
-      @Scheduled(cron="0/5 * * * * ?")   //每5秒执行一次  
+      @Scheduled(cron="0/5 * * * * ?")
       public void myTest() {
     	  SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
     	  String date1= sdf1.format(new Date(System.currentTimeMillis()))+".txt";
 
-          String contents = "1111";
+          String file1 = "1.txt";
           try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                  new FileOutputStream(date1), "utf-8"))) {
-        	  	writer.write(contents);
+                  new FileOutputStream(file1), "utf-8"))) {
+        	  	writer.write(date1);
           } catch (IOException ex) {
         	  
           }
@@ -32,10 +32,10 @@ public class DoSomethingTask {
     	  SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
     	  String date1= sdf1.format(new Date(System.currentTimeMillis()))+".txt";
 
-          String contents = "1111";
+          String file1 = "2.txt";
           try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                  new FileOutputStream(date1), "utf-8"))) {
-        	  	writer.write(contents);
+                  new FileOutputStream(file1), "utf-8"))) {
+        	  	writer.write(date1);
           } catch (IOException ex) {
         	  
           }

@@ -17,11 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Controller
-public class Helloworld {
-	   
-    //@Resource
-    //private ThreadPoolTaskExecutor taskExecutor;
-    
+public class Helloworld {  
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView fooView() {
@@ -30,23 +26,4 @@ public class Helloworld {
       	view.addObject("name", "foo");
       	return view;
     }
-    
-    
-    @RequestMapping(value = "/taskExecutor", method = RequestMethod.GET)
-    public void taskExecutor(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.getWriter().append("hello world");
-        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.execute(new Runnable() {
-        	public void run() {
-        		try {
-					Thread.sleep(5000);
-					System.out.println("5000s later");
-				} catch (InterruptedException e) {
-					System.out.println(e.getMessage());
-				}
-        	}
-        });
-        System.out.println("my later");
-    }
-	
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HelloWorld {
     @RequestMapping(method = RequestMethod.GET)
     public String SayHi(Model model) {
-        model.addAttribute("message", "Hello Spring MVC!");
+        model.addAttribute("message", "Hello 222 MVC!");
         return "sayhi";
     }
 }
